@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+@variant dark (&:where(.dark *));
+
+
+@theme {
+    /*自定义断点*/
+    --breakpoint-ms: 16rem;
+    --breakpoint-max-ms: 16rem;
+    --breakpoint-mg: 57rem;
+
+    /*自定义css变量*/
+    --vo-border-color-white: #eaeaea;
+    --vo-border-color-black: #333333;
+    --vo-border-color: var(--vo-border-color-white);
+}
+
+/* 覆盖nextra定义的样式*/
+.nextra-border {
+    border: none;
+}
+
+.nextra-code pre {
+    background-color: #F6F6F7;
+}
+.dark .nextra-code pre {
+    background-color: #1F2027;
+}
+.cover-nextra-bg-color {
+    /*cover nextra css var*/
+    --x-color-neutral-900: #18181B;
+    --x-color-gray-100: var(--color-white);
+}
+/*自定义边框颜色*/
+@utility vo-border-color {
+    border-color: var(--vo-border-color) ;
+}
+
+.dark {
+    --vo-border-color: var(--vo-border-color-black);
+}
