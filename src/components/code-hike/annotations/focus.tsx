@@ -1,5 +1,4 @@
 import { AnnotationHandler, InnerLine } from 'codehike/code'
-import { PreWithFocus } from "./focus.client"
 export const Focus: AnnotationHandler = {
   name: "focus",
   Line: (props) => {
@@ -8,7 +7,7 @@ export const Focus: AnnotationHandler = {
       className="px-2"
     />
   },
-  AnnotatedLine: ({ annotation, ...props }) => {
+  AnnotatedLine: ({ annotation: _annotation, ...props }) => {
     return <InnerLine merge={props} data-focus={true} />
   }
 }

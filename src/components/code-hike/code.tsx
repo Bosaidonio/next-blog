@@ -22,7 +22,6 @@ import {
 import { cn, parseCodeMeta } from '@/utils'
 import './theme.css'
 import { ReactNode } from 'react'
-import {CodeWithTabs} from './code-with-tabs'
 import ts from 'typescript'
 const isContainAnnotation = (annotation: CodeAnnotation[], annotationName: string): boolean => {
   return annotation.some(annotation => annotation.name === annotationName)
@@ -123,7 +122,7 @@ const CodeContent = ({ highlighted, handlers, hasFocus, hasFilename,hasTransitio
   )
 }
 
-function transpile(codeblock: RawCode, codeMeta: ReturnType<typeof parseCodeMeta>) {
+function _transpile(codeblock: RawCode, codeMeta: ReturnType<typeof parseCodeMeta>) {
   if (!codeMeta.transpile) {
     return [
       {
@@ -160,14 +159,14 @@ function transpile(codeblock: RawCode, codeMeta: ReturnType<typeof parseCodeMeta
 
 // 主要的 Code 组件
 export async function Code({ codeblock, highlighted,transition }: { codeblock: RawCode, highlighted?: HighlightedCode,transition?: boolean }) {
-  
+
   // 处理代码元数据
   const { codeMeta, highlighted: processedHighlighted } = await processCodeMeta(codeblock, highlighted)
 
   if (!processedHighlighted) {
     throw new Error('Failed to process code highlighting')
   }
-  
+
   // 构建处理程序
   const handlers = buildHandlers(codeMeta)
 
@@ -190,5 +189,5 @@ export async function Code({ codeblock, highlighted,transition }: { codeblock: R
         hasFilename={hasFilename}
       />
     </div>
-  
+
 }

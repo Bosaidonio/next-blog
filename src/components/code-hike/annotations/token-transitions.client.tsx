@@ -32,7 +32,7 @@ export class SmoothPre extends React.Component<CustomPreProps> {
   ) {
     const transitions = calculateTransitions(this.ref.current!, snapshot)
     transitions.forEach(({ element, keyframes, options }) => {
-      const { translateX, translateY, ...kf } = keyframes as any
+      const { translateX, translateY, ...kf } = keyframes as never
       if (translateX && translateY) {
         kf.translate = [
           `${translateX[0]}px ${translateY[0]}px`,

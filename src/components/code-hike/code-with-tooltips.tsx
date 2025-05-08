@@ -1,8 +1,8 @@
 import { Block, CodeBlock, parseProps } from "codehike/blocks"
-import { Pre, highlight } from "codehike/code"
+import {  highlight } from "codehike/code"
 import { z } from "zod"
 import { Code } from '@/components/code-hike'
-import { Tooltips } from '@/components/code-hike/annotations'
+
 
 const Schema = Block.extend({
   code: CodeBlock,

@@ -8,7 +8,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { getDictionary } from '@app/_dictionaries/get-dictionary'
 import ServerBanner from '@app/[lang]/server-banner'
-import { NotionHomeIcon } from '@app/_icons/theme-mode-svg'
 const fontClass = Inter({
   weight: ['400','600','700'],
   subsets: ['latin','latin-ext'],
@@ -29,7 +28,7 @@ export default async function RootLayout(props:LayoutProps) {
   const { lang } = await props.params
   const children = props.children
   const pageMap = await getPageMap(`/${lang}`)
-  const dict = await getDictionary(lang)
+  const _dict = await getDictionary(lang)
   // const docsPageMap = await getDocsPageMap()
   // 初始化 pageMap
   const banner = <ServerBanner params={props.params} />;

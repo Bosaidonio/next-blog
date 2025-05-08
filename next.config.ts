@@ -24,6 +24,7 @@ const withNextra = nextra({
 })
 
 export default withNextra({
+  output: 'export',
   reactStrictMode: true,
   devIndicators: false,
   allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev', ip.address()],

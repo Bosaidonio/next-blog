@@ -1,4 +1,4 @@
-export default {
+const en = {
   bannerTitle: "This is Bosaidon Blog ~ 🎉",
   welcomeTitle: "👋 Hi, Welcome To My Blog!",
   // 首页提示语
@@ -18,3 +18,5 @@ export default {
   skillVue: 'Vue.js: The Progressive JavaScript Framework',
   skillVueDesc: 'Vue.js is a lightweight, progressive frontend framework that enables developers to build user interfaces efficiently through reactive data binding and component-based architecture. It supports flexible scaling from simple pages to complex Single-Page Applications (SPAs) with intuitive APIs and exceptional performance.',
 }
+
+export default en

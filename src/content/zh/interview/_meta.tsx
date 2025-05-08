@@ -3,7 +3,7 @@ import { LinkArrowIcon } from 'nextra/icons'
 import { FC, ReactNode } from 'react'
 
 
-const ExternalLink: FC<{ children: ReactNode }> = ({ children }) => {
+export const ExternalLink: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <>
       {children}&thinsp;
