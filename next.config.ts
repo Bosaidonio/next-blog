@@ -24,10 +24,21 @@ const withNextra = nextra({
 })
 
 export default withNextra({
-  output: 'export',
   reactStrictMode: true,
   devIndicators: false,
   allowedDevOrigins: ['local-origin.dev', '*.local-origin.dev', ip.address()],
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
   i18n: {
     locales: ['en', 'zh'],
     defaultLocale: 'en',

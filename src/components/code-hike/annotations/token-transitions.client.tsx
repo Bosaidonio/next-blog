@@ -9,7 +9,12 @@ import {
 import React from "react"
 
 const MAX_TRANSITION_DURATION = 900 // milliseconds
-
+type KeyframesWithTranslate =  {
+  translateX?: [number, number];
+  translateY?: [number, number];
+  color?: [string, string];
+  opacity?: [number, number];
+}
 export class SmoothPre extends React.Component<CustomPreProps> {
   ref: React.RefObject<HTMLPreElement>
   constructor(props: CustomPreProps) {
@@ -32,7 +37,7 @@ export class SmoothPre extends React.Component<CustomPreProps> {
   ) {
     const transitions = calculateTransitions(this.ref.current!, snapshot)
     transitions.forEach(({ element, keyframes, options }) => {
-      const { translateX, translateY, ...kf } = keyframes as never
+      const { translateX, translateY, ...kf } = keyframes  as KeyframesWithTranslate
       if (translateX && translateY) {
         kf.translate = [
           `${translateX[0]}px ${translateY[0]}px`,
