@@ -1,0 +1,43 @@
+
+import { Steps } from 'nextra/components'
+
+
+### 1、说说vue中.sync修饰符的作用？
+在Vue中，`.sync`修饰符是一个语法糖，它允许在组件上使用双向绑定语法，它实际上会给组件挂载一个`update:propName`的事件，然后监听这个事件，并在事件回调中更新对应的属性。
+
+例如，假设我们有一个名为`visible`的属性，并且我们希望在组件上使用双向绑定语法来更新这个属性的值。我们可以使用`.sync`修饰符来达到这个目的：
+
+```html
+<CustomDialog :visible.sync="visible" />
+```
+
+等价于
+```html
+<CustomDialog :visible="visible" @update:visible="visible = $event" />
+```
+其中，`update:visible`事件会触发`visible`属性的更新，而`$event`就是传递给`update:visible`事件的参数。
+
+### 2、使用vue封装过哪些组件？
+
+- 基于elementui封装过菜单组件
+- 地图组件
+- echarts组件
+- 动画组件
+- 基于滴滴开源的logicflow封装过组件
+- 表格单元格可编辑组件
+
+### 3、谈谈vue双向数据绑定的原理？
+
+`Vue`是通过`Object.defineProperty`实现的双向数据绑定
+
+(1) 初始化时
+在`new Vue()`的时候，会通过调用`Vue`原型链上的`_init`方法来初始化, 然后调用`initSate`方法，在`initState`中`vue`会调用`initData`，在`initData`方法中，会调用`observer`方法，然后生成`Observer`实例.
+
+(2)生成Observer实例时
+调用自身的`walk`函数遍历对象上所有的`key`，循环调用`defineReactive`方法，`defineReactive`方法内部会为每个属性创建`Dep`依赖实例，并用`Object.defineProperty`来对属性的访问和修改作劫持。
+
+(3) 挂载时
+创建`渲染Watcher`实例，并将渲染实例保存到`Dep.target`属性上，然后调用`render`函数的时候会访问在`data`中定义属性，就会触发`get`方法进行依赖收集，在`get`方法中时通过调用`depend`方法进行依赖收集，然后会将`dep`实例push到`渲染watcher`的中，同时也会把`渲染watcher`添加到属性的`Dep`实例中,
+
+(4) 数据更新时
+调用`set`中的`notify`方法，`notify`方法会遍历当前属性`Dep`实例上所有的`watcher`，并调用`watcher`的`update`方法完成更新和依赖再收集操作。

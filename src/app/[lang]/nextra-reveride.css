@@ -1,0 +1,45 @@
+
+/* 覆盖nextra定义的样式*/
+article {
+    min-width: 928px;
+}
+article h6 {
+    font-size: 20px!important;
+}
+.nextra-code {
+    color: #268BD2;
+}
+.nextra-code.x\:relative.x\:not-first\:mt-\[1\.25em\]{
+    margin-top: 10px;
+}
+:not(.nextra-callout)  .nextra-code.x\:relative.x\:not-first\:mt-\[1\.25em\] div {
+    background-color: rgba(0, 93, 199, 0.05);
+    border: none;
+    border-bottom: 1px solid var(--vo-border-color);
+}
+:not(pre) > :is(code.nextra-code):not([class*="twoslash-"]) {
+    margin: 0 5px;
+}
+.nextra-border {
+    border: none;
+}
+.base-group{
+    font-weight: bold;
+    font-size: 12px;
+}
+.nextra-code pre {
+    background-color: rgba(0, 93, 199, 0.05);
+    box-shadow: none;
+}
+.nextra-callout .nextra-code pre {
+    background-color: oklch(97.7% 0.013 236.62); /* 或者 transparent */
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+.dark .nextra-code pre {
+    background-color: #1F2027;
+}
+.cover-nextra-bg-color {
+    /*cover nextra css var*/
+    --x-color-neutral-900: #18181B;
+    --x-color-gray-100: var(--color-white);
+}

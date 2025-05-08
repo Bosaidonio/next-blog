@@ -1,0 +1,94 @@
+import { Callout } from 'nextra/components'
+import {
+  ClientCodeSource,
+  ExampleCodeBlock,
+  SourceCodeBlock
+} from '@client/client-code-source'
+
+### 含义
+
+**Object.assign()** 静态方法支持将**一个**或者**多个源对象**中所有`可枚举`的`自有属性`复制到`目标对象`，并返回**修改后的目标对象**。
+
+<Callout type="info">
+   **可枚举的定义：**
+   一个属性是否“可枚举”，决定了它是否可以通过如 `for...in` 循环或 `Object.keys()` 被遍历到。
+   默认情况下，使用字面量`{}`或 `Object.defineProperty` 中 `enumerable: true` 定义的属性为可枚举。
+   例如：
+      ```js
+      // 字面量定义
+      const obj = { a: 1 }
+      // 定义属性
+      Object.defineProperty(obj, 'b', {
+          enumerable: true,
+          value: 2
+      })
+      ```
+</Callout>
+
+
+<Callout type="info">
+  **自有属性：** 自有属性是指直接定义在对象本身上的属性，而非继承自其原型链的属性。例如：
+  ```js
+  // 自有属性
+  const obj = { a: 1 }
+  // 原型链上的属性
+  Object.prototype.d = 3
+  ```
+</Callout>
+
+### 语法
+
+```js
+Object.assign(target, ...sources)
+```
+
+#### 参数及返回值
+- target: 目标对象，属性将被赋值到此对象，并最终作为返回值返回。
+
+- sources: 一个或多个源对象，其属性将被复制到目标对象。
+
+- 返回值: 目标对象本身，已经被修改过。
+
+
+### 示例
+
+
+```ts showLineNumbers filename="index.ts"
+const target = { a: 1 };
+const source = { b: 2, c: 3 };
+const result = Object.assign(target, source);
+
+console.log(result) // { a: 1, b: 2, c: 3 }
+console.log(target === result); // true，说明是修改的原目标对象
+```
+
+
+<Callout type="warning">
+  注意事项：
+  - 属性会被覆盖：如果源对象与目标对象有同名属性，后面的源对象会覆盖前面的值。
+  - 属性覆盖限制：仅复制自有且可枚举的属性，不复制原型链上的属性或不可枚举属性。
+  - 对于引用数据类型是浅拷贝，如果属性值是对象，复制的是引用而非深层数据。
+</Callout>
+
+### 原理
+
+<ClientCodeSource>
+  <SourceCodeBlock>
+    ```js showLineNumber file=<rootDir>/object/assign.md#L2-L54
+    ```
+  </SourceCodeBlock>
+
+  <ExampleCodeBlock>
+    ```js showLineNumber file=<rootDir>/object/assign.md#L59-L65
+    ```
+  </ExampleCodeBlock>
+</ClientCodeSource>
+
+### FAQ
+
+#### 1. 可枚举与可迭代的区别？
+可枚举（enumerable）和可迭代（iterable）是两种不同的概念。
+
+- 可枚举（enumerable）：是指一个属性是否可以通过`for...in`循环或`Object.keys()`方法来遍历。
+- 可迭代（iterable）：是指一个对象是否实现了`Symbol.iterator`方法，使得这个对象可以迭代。
+

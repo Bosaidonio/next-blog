@@ -1,0 +1,26 @@
+import { Callout } from 'nextra/components'
+
+## 语法与类型
+
+> 本章讨论 JavaScript 的基本语法、变量声明、数据类型和字面量。
+
+### 一、基础
+JavaScript 的大部分语法从 Java、C 和 C++ 借鉴而来，但同时也受到 Awk、Perl 和 Python 的影响。
+
+
+JavaScript 是区分大小写的，并使用 Unicode 字符集。举个例子，可以将单词 Früh（在德语中意思是“早”）用作变量名。
+```js
+const Früh = "foobar";
+```
+
+但是，由于 JavaScript 是大小写敏感的，因此变量 früh 和 Früh 则是两个不同的变量。
+
+在 JavaScript 中，指令被称为语句，并用分号（;）进行分隔。
+
+如果一条语句独占一行的话，那么分号是可以省略的。但如果一行中有多条语句，那么这些语句必须用分号进行分隔。
+
+<Callout>
+备注： `ECMAScript` 规定了在语句的末尾自动插入分号
+（[ASI](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Lexical_grammar#%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%B7%E8%A1%A5%E5%85%A8)）
+。
+</Callout>

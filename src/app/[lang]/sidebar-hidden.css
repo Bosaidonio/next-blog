@@ -1,0 +1,10 @@
+aside a[href="/frontend/dashboard"],
+aside a[href="/frontend/css"],
+aside a[href="/frontend/html"],
+aside a[href="/frontend/javascript"],
+aside a[href="/frontend/react"],
+aside a[href="/frontend/typescript"],
+aside a[href="/frontend/vue"],
+aside a[href="/frontend/web-api"] {
+  display: none;
+}

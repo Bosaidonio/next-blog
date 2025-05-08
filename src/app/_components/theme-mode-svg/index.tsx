@@ -1,6 +1,4 @@
 import React from 'react'
-import cn from 'clsx'
-import { isNumber } from '@/_utils/is'
 
 
 export interface ThemeModeSvgProps {
@@ -9,7 +7,7 @@ export interface ThemeModeSvgProps {
   children?: React.ReactNode;
   width?: string;
 }
-const Index =  (props:ThemeModeSvgProps) => {
+const ThemeModeSvg =  (props:ThemeModeSvgProps) => {
   const widthMap: Record<string, string> = {
     default: "w-full",
     small: "w-[30px]",
@@ -19,4 +17,4 @@ const Index =  (props:ThemeModeSvgProps) => {
     {props.children}
   </div>
 }
-export default Index
+export default ThemeModeSvg

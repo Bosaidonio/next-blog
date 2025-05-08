@@ -1,0 +1,101 @@
+import { Steps } from 'nextra/components'
+
+## 1.HTML是什么？
+
+HTML（HyperText Markup Language，超文本标记语言）是一种用于创建网页的标准标记语言。它通过一系列的标签（tags）来描述网页的结构和内容，浏览器根据这些标签解析并渲染出用户可见的网页。HTML 是构建 Web 的基础，无论是简单的静态页面还是复杂的动态应用，都离不开 HTML。
+
+HTML 的核心特点包括：
+- **简单易学**：HTML 使用纯文本格式，语法直观，易于上手。
+- **跨平台性**：HTML 文件可以在任何支持 Web 的设备上运行，无论操作系统或硬件如何。
+- **可扩展性**：HTML 可以与其他技术（如 CSS 和 JavaScript）结合使用，实现丰富的功能和视觉效果。
+
+## 2.HTML的诞生背景与作用
+
+  ###  2.1 背景
+  HTML 的诞生可以追溯到 20 世纪 80 年代末和 90 年代初。当时，欧洲核子研究中心（CERN）的科学家们需要一种方法来共享和链接文档。1989 年，蒂姆·伯纳斯-李（Tim Berners-Lee）提出了一个名为“万维网”（World Wide Web）的系统，并在 1991 年发布了第一个版本的 HTML。
+
+  HTML 的设计初衷是为了实现以下目标：
+  - 提供一种简单的方式，将文档通过超链接相互连接。
+  - 支持跨平台的文档共享。
+  - 使非技术人员也能轻松创建和发布内容。
+
+  ### 2.2 作用
+  HTML 的主要作用是定义网页的结构和内容。它通过标签来描述标题、段落、列表、图像、链接等元素。HTML 是 Web 开发的基础，所有其他技术（如 CSS 和 JavaScript）都在其基础上进行扩展和增强。
+
+## 3.HTML的发展历程
+
+HTML 的发展历程可以分为以下几个重要阶段：
+
+<Steps>
+  ### HTML 1.0（1991）
+  最初的 HTML 版本非常简单，只包含少量的标签，主要用于描述基本的文本结构，如标题、段落和链接。
+
+  ### HTML 2.0（1995）
+  HTML 2.0 是第一个标准化的版本，由 IETF（Internet Engineering Task Force）发布。它引入了一些新的功能，如表单和图片支持，为交互式网页奠定了基础。
+
+  ### HTML 3.2 和 4.0（1997-1999）
+  HTML 3.2 增加了对表格、脚本和样式的支持，而 HTML 4.0 则进一步完善了标准，引入了对多媒体和国际化支持的功能。HTML 4.01 是这一时期的最后一个版本，成为后续发展的基础。
+
+  ### XHTML（2000）
+  XHTML（Extensible HyperText Markup Language）是基于 XML 的 HTML 版本，要求更严格的语法规范。它的目的是使 HTML 更加模块化和可扩展。
+
+  ### HTML5（2014 至今）
+  HTML5 是目前最流行的版本，带来了许多革命性的变化，包括：
+  - 新增语义化标签（如 `<header>`、`<footer>`、`<article>` 等），提升了网页的可读性和 SEO 效果。
+  - 原生支持音频和视频播放，无需依赖第三方插件。
+  - 引入 Canvas 和 WebGL，支持强大的图形和动画功能。
+  - 提供本地存储和离线应用支持，增强了用户体验。
+</Steps>
+
+## 4、HTML与XML的关系
+
+HTML 和 XML（eXtensible Markup Language，可扩展标记语言）都是标记语言，但它们的设计目标和用途有所不同：
+
+- **HTML**：专注于描述网页的内容和结构，强调易用性和兼容性。HTML 的语法较为宽松，允许省略某些标签或属性。
+- **XML**：设计为一种通用的数据存储和传输格式，强调数据的结构化和可扩展性。XML 的语法非常严格，要求所有标签必须正确闭合。
+
+尽管如此，HTML 和 XML 也有交集。例如，XHTML 就是将 HTML 与 XML 结合的一种尝试，它要求 HTML 遵循 XML 的严格语法规范。
+
+此外，HTML5 中的一些新特性（如自定义数据属性 `data-*`）也借鉴了 XML 的灵活性和扩展性。
+
+## 5、HTML与CSS、Js的关系
+
+HTML 是网页的基础，而 CSS（Cascading Style Sheets，层叠样式表）和 JavaScript（简称 JS）则是增强网页表现和交互能力的关键技术。
+
+### 5.1 HTML 与 CSS
+HTML 负责定义网页的内容和结构，而 CSS 则用于控制网页的外观和布局。通过分离内容和样式，开发者可以更高效地管理和维护代码。例如：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到我的网站</h1>
+    <p>这是一个示例段落。</p>
+</body>
+</html>
+```
+
+### 5.2 HTML 与 JavaScript
+
+JavaScript 是一种编程语言，用于为网页添加动态交互功能。HTML 提供了 DOM（Document Object Model，文档对象模型），JavaScript 可以通过操作 DOM 来修改网页的内容、样式和行为。例如：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function changeText() {
+            document.getElementById("demo").innerHTML = "Hello, World!";
+        }
+    </script>
+</head>
+<body>
+    <p id="demo">点击按钮更改文本</p>
+    <button onclick="changeText()">点击我</button>
+</body>
+</html>
+```

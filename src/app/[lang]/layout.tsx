@@ -64,7 +64,7 @@ export default async function RootLayout(props:LayoutProps) {
       banner={banner}
       navbar={navbar}
       pageMap={pageMap}
-      docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
+      docsRepositoryBase="https://github.com/bosaidonio/next-blog/tree/main"
       footer={footer}
       i18n={[
         { locale: 'en', name: 'English' },

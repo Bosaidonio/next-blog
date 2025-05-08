@@ -1,6 +1,6 @@
 
 import cn from 'clsx'
-import ClientHomeIcon from '@client/client-home-icon'
+import Index from '@client/client-home-icon'
 import './page.css'
 import Link from 'next/link'
 import { getDictionary } from '@app/_dictionaries/get-dictionary'
@@ -50,7 +50,7 @@ const Home = async (props: HomeProps) => {
               {dict.homeDesc}
             </p>
             <div className="flex gap-5 ">
-              <Link href="/introduction" className="
+              <Link href="/main/introduction" className="
             px-4 py-2 rounded-sm text-lg bg-black text-slate-200  dark:bg-gray-800  font-bold
             cursor-pointer select-none outline-none
             transition transform-[scale(1)] active:transform-[scale(0.97)]
@@ -67,7 +67,7 @@ const Home = async (props: HomeProps) => {
             </div>
           </div>
           <div className="image lg:w-[500px] md:w-full  sm:w-full">
-            <ClientHomeIcon />
+            <Index />
           </div>
         </div>
         <div className="technology flex flex-col items-center gap-5 lg:mt-40 md:mt-25 ms:mt-15">
