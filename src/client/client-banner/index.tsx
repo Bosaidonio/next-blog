@@ -9,7 +9,7 @@ interface ClientBannerProps {
 }
 export default  function ClientBanner(props: ClientBannerProps ) {
  const pathname = usePathname();
- if (pathname === '/' || pathname === `/${props.lang}`) return null;
+ if (pathname === '/' || pathname === `/${props.lang}/main`) return null;
  const { dict } = props;
  return (
    <Banner storageKey="some-key">

@@ -80,6 +80,9 @@ button {
 body {
     letter-spacing: 0.2px;
 }
+.is-home article {
+    min-width: unset;
+}
 
 .sp-wrapper {
     margin-top: 20px !important;

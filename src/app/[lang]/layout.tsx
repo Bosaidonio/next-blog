@@ -8,6 +8,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { getDictionary } from '@app/_dictionaries/get-dictionary'
 import ServerBanner from '@app/[lang]/server-banner'
+import IsHome from '@app/_components/is-home'
+import AlgoliaSearch from '@/components/algolia-search'
 const fontClass = Inter({
   weight: ['400','600','700'],
   subsets: ['latin','latin-ext'],
@@ -33,13 +35,17 @@ export default async function RootLayout(props:LayoutProps) {
   // 初始化 pageMap
   const banner = <ServerBanner params={props.params} />;
   const navbar = (
-    <Navbar
-      logo={
-      <>
-        <div className="flex justify-center items-center w-[30px] h-[30px] mr-2.5 rounded-full font-bold text-gray-200 bg-[var(--color-black)] dark:bg-[var(--color-white)] dark:text-gray-950">M</div>
-        <b>Bosaidon</b>
-    </>}
-    />
+    <>
+      <Navbar
+        logo={
+          <>
+            <div className="flex justify-center items-center w-[30px] h-[30px] mr-2.5 rounded-full font-bold text-gray-200 bg-[var(--color-black)] dark:bg-[var(--color-white)] dark:text-gray-950">M</div>
+            <b>Bosaidon</b>
+          </>
+        }
+      />
+      <AlgoliaSearch />
+    </>
   )
   const footer = <div className="my-footer-bg pt-5 border-t vo-border-color cover-nextra-bg-color"><Footer>MIT {new Date().getFullYear()} © Next.js.</Footer></div>
 
@@ -50,30 +56,29 @@ export default async function RootLayout(props:LayoutProps) {
       // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
       suppressHydrationWarning
     >
-    <Head
-      backgroundColor={{
-        // dark: '#040711',
-        dark: '#18181B',
-        light: 'rgb(255, 255, 255)'
-      }}
-    >
-    </Head>
-    <body className={`w-dvw h-dvh flex flex-col ${fontClass.className} `}>
-    <Layout
-      banner={banner}
-      navbar={navbar}
-      pageMap={pageMap}
-      docsRepositoryBase="https://github.com/bosaidonio/next-blog/tree/main"
-      footer={footer}
-      i18n={[
-        { locale: 'en', name: 'English' },
-        { locale: 'zh', name: '简体中文' },
-      ]}
-      // ... Your additional layout options
-    >
-      {children}
-    </Layout>
-    </body>
+      <Head
+        backgroundColor={{
+          // dark: '#040711',
+          dark: '#18181B',
+          light: 'rgb(255, 255, 255)',
+        }}
+      ></Head>
+      <body className={`w-dvw h-dvh flex flex-col ${fontClass.className} `}>
+        <Layout
+          banner={banner}
+          navbar={navbar}
+          pageMap={pageMap}
+          docsRepositoryBase="https://github.com/bosaidonio/next-blog/tree/main"
+          footer={footer}
+          i18n={[
+            { locale: 'en', name: 'English' },
+            { locale: 'zh', name: '简体中文' },
+          ]}
+          // ... Your additional layout options
+        >
+          <IsHome>{children}</IsHome>
+        </Layout>
+      </body>
     </html>
   )
 }

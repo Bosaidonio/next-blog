@@ -1,4 +1,4 @@
-import Index from '@client/client-banner'
+import ClientBanner from '@client/client-banner'
 import { getDictionary } from '@app/_dictionaries/get-dictionary'
 
 interface ClientBannerProps {
@@ -7,5 +7,5 @@ interface ClientBannerProps {
 export default async function ServerBanner(props: ClientBannerProps) {
   const { lang } = await props.params
   const dict = await getDictionary(lang)
-  return <Index lang={lang} dict={dict} />;
+  return <ClientBanner lang={lang} dict={dict} />
 }

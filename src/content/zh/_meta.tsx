@@ -34,8 +34,8 @@ const meta: MetaRecord = {
     type: 'page',
   },
   syntax: {
-    title: "语法",
-    type: 'page'
-  }
+    title: '语法',
+    type: 'page',
+  },
 }
 export default meta

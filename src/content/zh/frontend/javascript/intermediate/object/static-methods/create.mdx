@@ -6,37 +6,9 @@ import { CodeSwitcher, CodeWithTabs, CodeWithTooltips,CodeTranspile } from '@/co
 
 **Object.create()** 静态方法以一个**现有对象**作为**原型**，创建一个**新对象**。
 
-<CodeWithTabs>
-  ```jsx !!tabs title=main1.js
-  // !fold[/className="(.*?)"/gm]
-  function Foo() {
-  return (
-  <div className="bg-red-200 opacity-50">
-  <span className="block">hey</span>
-  </div>
-  )
-}
-  ```
-
-  ```js !!tabs title=main2.js filename="create.js" showLineNumber
-  // !focus(2:2)
-  const lorem = ipsum(dolor, sit)
-  // !link[/amet/] https://example.com
-  // !wave[/amet/]
-  const [amet, consectetur] = [0, 0]
-  // !className line-through
-  lorem.adipiscing((sed, elit) => {
-  if (sed) {
-  amet += elit
-}
-})
-  ```
-</CodeWithTabs>
 
 ### 语法
-
 ```js
-// !wave[/proto/] green
 Object.create(proto)
 Object.create(proto, propertiesObject)
 ```
