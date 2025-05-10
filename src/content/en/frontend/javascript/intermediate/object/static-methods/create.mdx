@@ -1,0 +1,99 @@
+import { Callout } from 'nextra/components'
+import { ClientCodeSource, ExampleCodeBlock, SourceCodeBlock } from '@client/client-code-source'
+import { CodeSwitcher, CodeWithTabs, CodeWithTooltips,CodeTranspile } from '@/components/code-hike'
+
+### 含义
+
+**Object.create()** 静态方法以一个**现有对象**作为**原型**，创建一个**新对象**。
+
+
+### 语法
+```js
+Object.create(proto)
+Object.create(proto, propertiesObject)
+```
+
+#### 参数
+- proto：新创建对象的原型对象。
+
+- propertiesObject `[可选]`：用来定义**属性名称**以及**属性描述符**，对应于 [Object.defineProperties()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperties) 的第二个参数。
+
+### 示例
+#### 1、`proto`参数
+```js
+const person = {
+  greet() {
+    console.log('Hello!');
+  }
+};
+
+const student = Object.create(person);
+student.name = 'Alice';
+
+student.greet(); // Hello!
+console.log(student.name); // Alice
+```
+
+<Callout type="info">
+  两种方法判断`student`的原型是否为`person`
+  - 通过 `Object.getPrototypeOf()`获取对象的原型
+  ```js
+  console.log(Object.getPrototypeOf(student) === person) // true
+  ```
+  - 通过`__proto__`获取对象的原型
+  ```js
+  console.log(Object.__proto__ === person) // true
+  ```
+</Callout>
+
+#### 2、`propertiesObject`参数
+```js
+const person = {
+  greet() {
+    console.log('Hello!');
+  }
+};
+
+const student = Object.create(person, {
+  name: {
+    value: 'Alice',
+    // 是否可写
+    writable: true,
+    // 是否可枚举
+    enumerable: true,
+    // 是否可配置
+    configurable: true
+  }
+});
+
+student.greet(); // Hello!
+console.log(student.name); // Alice
+```
+
+<Callout type="warning">
+  注意：如果 `proto` 不是对象或 `null`，会抛出 `TypeError` 错误。
+  ```js
+  // TypeError: Object prototype may only be an Object or null: 123
+  Object.create(123);
+  ```
+</Callout>
+
+### 原理
+
+<ClientCodeSource source='https://playcode.io/2358942'>
+  <SourceCodeBlock>
+    ```js showLineNumber file=<rootDir>/object/create.md#L2-L29
+    ```
+  </SourceCodeBlock>
+
+  <ExampleCodeBlock>
+    ```js showLineNumber file=<rootDir>/object/create.md#L31-L59
+    ```
+  </ExampleCodeBlock>
+</ClientCodeSource>
+
+
+### FAQ
+
+#### 1、`Object.create(null)` 和直接写字面量 `{}` 有什么区别？
+字面量`{}` 默认继承 `Object.prototype`，而 `Object.create(null)` 创建的是完全干净的对象，没有原型链，不包含任何默认属性，适合用作**纯字典对象**。

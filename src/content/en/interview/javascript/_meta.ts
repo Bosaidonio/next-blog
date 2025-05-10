@@ -1,6 +1,6 @@
 import type { MetaRecord } from 'nextra'
 
 const meta:MetaRecord =  {
-  index: "Instructor"
+  index: "",
 }
 export default meta

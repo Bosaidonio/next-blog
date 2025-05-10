@@ -10,8 +10,7 @@ const meta:MetaRecord =  {
       layout: 'full'
     }
   },
-  "introduction": "Introduction",
-  docs: 'Documentation',
+  "introduction": "自序",
 
 }
 export default meta
