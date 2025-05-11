@@ -21,7 +21,7 @@ function getHeadersLocale(request: NextRequest): string {
 
   return locale
 }
-
+let locale = ''
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
@@ -29,15 +29,12 @@ export function middleware(request: NextRequest) {
   const pathnameHasLocale = HAS_LOCALE_RE.test(pathname)
   const cookieLocale = request.cookies.get(COOKIE_NAME)?.value
   if (pathname.startsWith('/zh') || pathname.startsWith('/en')) {
-    const locale = pathname.startsWith('/zh/') ? 'zh' : 'en'
-    const response = NextResponse.next()
-    response.cookies.set(COOKIE_NAME, locale)
-    return response
+     locale = pathname.startsWith('/zh/') ? 'zh' : 'en'
   }
 
   // Redirect if there is no locale
   if (!pathnameHasLocale) {
-    const locale = cookieLocale || getHeadersLocale(request)
+    if (!locale) locale = cookieLocale || getHeadersLocale(request)
     const url = addBasePath(`/${locale}${pathname}`)
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
