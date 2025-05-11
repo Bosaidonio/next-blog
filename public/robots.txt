@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.idash.cn
+
+# Sitemaps
+Sitemap: https://www.idash.cn/sitemap.xml
