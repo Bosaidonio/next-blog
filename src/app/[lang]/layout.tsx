@@ -62,7 +62,8 @@ export default async function RootLayout(props:LayoutProps) {
           dark: '#18181B',
           light: 'rgb(255, 255, 255)',
         }}
-      ></Head>
+      >
+      </Head>
       <body className={`w-dvw h-dvh flex flex-col ${fontClass.className} `}>
         <Layout
           banner={banner}
