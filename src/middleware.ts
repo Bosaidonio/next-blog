@@ -12,10 +12,8 @@ const HAS_LOCALE_RE = new RegExp(`^\\/(${locales.join('|')})(\\/|$)`)
 
 const COOKIE_NAME = 'NEXT_LOCALE'
 
-function _getHeadersLocale(request: NextRequest): string {
-  const headers = Object.fromEntries(
-    request.headers.entries()
-  )
+function getHeadersLocale(request: NextRequest): string {
+  const headers = Object.fromEntries(request.headers.entries())
 
   // Use negotiator and intl-localematcher to get best locale
   const languages = new Negotiator({ headers }).languages(locales)
@@ -30,11 +28,16 @@ export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = HAS_LOCALE_RE.test(pathname)
   const cookieLocale = request.cookies.get(COOKIE_NAME)?.value
+  if (pathname.startsWith('/zh') || pathname.startsWith('/en')) {
+    const locale = pathname.startsWith('/zh/') ? 'zh' : 'en'
+    const response = NextResponse.next()
+    response.cookies.set(COOKIE_NAME, locale)
+    return response
+  }
 
   // Redirect if there is no locale
   if (!pathnameHasLocale) {
-    // const locale =   cookieLocale || getHeadersLocale(request)
-    const locale = 'zh'
+    const locale = cookieLocale || getHeadersLocale(request)
     const url = addBasePath(`/${locale}${pathname}`)
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
