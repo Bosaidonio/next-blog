@@ -28,9 +28,6 @@ export function middleware(request: NextRequest) {
   // Check if there is any supported locale in the pathname
   const pathnameHasLocale = HAS_LOCALE_RE.test(pathname)
   const cookieLocale = request.cookies.get(COOKIE_NAME)?.value
-  if (pathname.startsWith('/zh') || pathname.startsWith('/en')) {
-     locale = pathname.startsWith('/zh/') ? 'zh' : 'en'
-  }
 
   // Redirect if there is no locale
   if (!pathnameHasLocale) {
