@@ -41,10 +41,10 @@ export default async function RootLayout(props:LayoutProps) {
           <>
             <div className="flex justify-center items-center w-[30px] h-[30px] mr-2.5 rounded-full font-bold text-gray-200 bg-[var(--color-black)] dark:bg-[var(--color-white)] dark:text-gray-950">M</div>
             <b>Bosaidon</b>
+            <AlgoliaSearch />
           </>
         }
       />
-      <AlgoliaSearch />
     </>
   )
   const footer = <div className="my-footer-bg pt-5 border-t vo-border-color cover-nextra-bg-color"><Footer>MIT {new Date().getFullYear()} © Next.js.</Footer></div>
