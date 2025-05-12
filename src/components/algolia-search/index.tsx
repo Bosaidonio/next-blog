@@ -1,16 +1,22 @@
-'use client';
-import { DocSearch } from '@docsearch/react';
-import { usePathname } from 'next/navigation';
-import '@docsearch/css';
+'use client'
+import { DocSearch } from '@docsearch/react'
+import { usePathname } from 'next/navigation'
+import '@docsearch/css'
 
+interface AlgoliaSearchProps {
+  appId: string
+  apiKey: string
+  indexName: string
+}
 
-export default function AlgoliaSearch() {
-  const locale = usePathname().split('/')[1];
+export default function AlgoliaSearch({appId,apiKey,indexName}:AlgoliaSearchProps) {
+  const locale = usePathname().split('/')[1]
+  console.log(appId,apiKey,indexName)
   return (
     <DocSearch
-      appId="BY658UP9FT"
-      apiKey="917f0550018b7306daefeddf69da5c2f"
-      indexName="idash"
+      appId={appId}
+      apiKey={apiKey}
+      indexName={indexName}
       insights={true}
       searchParameters={{
         facetFilters: [`lang:${locale}`],

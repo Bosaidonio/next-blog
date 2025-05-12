@@ -25,7 +25,9 @@ interface LayoutProps {
   children: React.ReactNode
   params: Promise<{ lang: string }>;
 }
-
+const appId = process.env.ALGOLIA_APP_ID || ''
+const apiKey = process.env.ALGOLIA_ADMIN_API_KEY || ''
+const indexName = process.env.ALGOLIA_INDEX_NAME || ''
 export default async function RootLayout(props:LayoutProps) {
   const { lang } = await props.params
   const children = props.children
@@ -41,7 +43,7 @@ export default async function RootLayout(props:LayoutProps) {
           <>
             <div className="flex justify-center items-center w-[30px] h-[30px] mr-2.5 rounded-full font-bold text-gray-200 bg-[var(--color-black)] dark:bg-[var(--color-white)] dark:text-gray-950">M</div>
             <b>Bosaidon</b>
-            <AlgoliaSearch />
+            <AlgoliaSearch appId={appId} apiKey={apiKey} indexName={indexName} />
           </>
         }
       />

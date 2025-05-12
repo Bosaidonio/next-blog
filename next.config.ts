@@ -50,13 +50,8 @@ export default withNextra({
   },
   redirects: async () => [
     {
-      source: '/zh',
-      destination: '/zh/main',
-      statusCode: 302,
-    },
-    {
-      source: '/en',
-      destination: '/en/main',
+      source: '/',
+      destination: '/main',
       statusCode: 302,
     },
     {
